@@ -66,7 +66,7 @@ subprocess.run([
     "-latomic",
     "-shared",
     "-u", "ANativeActivity_onCreate"
-])
+]).check_returncode()
 
 # pack everyting into the .apk file using aapt
 BUILD_TOOLS_PATH = SDK_PATH + "/build-tools/34.0.0-rc3"
@@ -81,9 +81,9 @@ subprocess.run([
     "-F", "./build/test.unaligned.apk",
     "-A", "assets",
     "./build/tmp"
-])
+]).check_returncode()
 
-# sign the apk
+# sign the apk (jarsigner)
 cur_apk_name = "./build/test.unaligned.apk"
 use_apksigner = True
 if not use_apksigner:
@@ -98,7 +98,7 @@ if not use_apksigner:
         "-signedJar", "./build/test.signed.apk",
         cur_apk_name,
         "test"
-    ])
+    ]).check_returncode()
     cur_apk_name = "./build/test.signed.apk"
 
 # (optional) align the apk for better performance in loading
@@ -111,9 +111,11 @@ subprocess.run([
     "4", # 4 byte alignment
     cur_apk_name, # input
     "./build/test.apk" # output
-])
+]).check_returncode()
 cur_apk_name = "./build/test.apk"
 
+# sign apk (apksigner)
+# unlike jarsigner, apksigner must be run *after* aligning
 if use_apksigner:
     APKSIGNER_PATH = BUILD_TOOLS_PATH + "/apksigner.bat"
     subprocess.run([
@@ -123,12 +125,13 @@ if use_apksigner:
         "--ks", "test.keystore",
         "--ks-pass", "pass:android",
         cur_apk_name
-    ])
+    ]).check_returncode()
 
 gotta_run = len(sys.argv) > 1 and sys.argv[1] == "run"
 gotta_install = len(sys.argv) > 1 and sys.argv[1] == "install"
 gotta_install = gotta_install or gotta_run
 
+# install in the device
 ADB_PATH = SDK_PATH + "/platform-tools/adb.exe"
 if gotta_install:
     subprocess.run([
@@ -136,8 +139,9 @@ if gotta_install:
         "install",
         "-r",
         cur_apk_name
-    ])
+    ]).check_returncode()
 
+# run in the device
 if gotta_run:
     print("run!\n")
     if 0:
@@ -146,10 +150,10 @@ if gotta_run:
             ADB_PATH,
             "shell", "logcat",
             #"-s", "BARE_APK"
-        ], stdout=f)
+        ], stdout=f).check_returncode()
     subprocess.run([
         ADB_PATH,
         "shell", "am", "start",
         "-n",
         "org.my_organization.test/android.app.NativeActivity"
-    ])
+    ]).check_returncode()

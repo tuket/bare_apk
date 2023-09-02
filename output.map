@@ -38,7 +38,7 @@
     1524     1524        c     1                 __atexit_handler_wrapper
     1530     1530       20     1                 atexit
     1548     1548        0     1                 $d.3
-    1550     1550      48c     4         C:/Users/tuket/AppData/Local/Temp/main-7d76ed.o:(.text)
+    1550     1550      48c     4         C:/Users/tuket/AppData/Local/Temp/main-a0e30d.o:(.text)
     1550     1550        0     1                 $a.0
     1550     1550       64     1                 dlog
     15ac     15ac        0     1                 $d.1
@@ -101,7 +101,7 @@
     2b3c     2b3c       1c     4 .got.plt
     2b3c     2b3c       1c     4         <internal>:(.got.plt)
     3b58     3b58        8     4 .bss
-    3b58     3b58        8     4         C:/Users/tuket/AppData/Local/Temp/main-7d76ed.o:(.bss)
+    3b58     3b58        8     4         C:/Users/tuket/AppData/Local/Temp/main-a0e30d.o:(.bss)
     3b58     3b58        8     1                 gd
        0        0       b2     1 .comment
        0        0       b2     1         <internal>:(.comment)
