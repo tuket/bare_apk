@@ -1,3 +1,5 @@
 build/
 .vscode/
 *.keystore
+log.txt
+output.map

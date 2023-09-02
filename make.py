@@ -3,7 +3,7 @@ import os
 import subprocess
 import shutil
 
-APP_NAME = "bare_appk"
+APP_NAME = "test"
 ANDROID_MIN_VERSION = 21
 ANDROID_TARGET_VERSION = 33
 SDK_PATH = "C:/Android"
@@ -53,7 +53,6 @@ subprocess.run([
     #"-fstack-protector-strong",
     #"-funwind-tables",
     #"-mthumb",
-    #"-Wl,--gc-sections",
     #"-Wl,--build-id=sha1",
     #"-Wl,--no-rosegment",
     #"-g",
@@ -61,7 +60,9 @@ subprocess.run([
     "-o", OUTPUT_SO_FOLDER + "/libtest.so",
     "main.c", #"android_native_app_glue.c",
     "-L" + LIB_PATH,
-    "-Wl,--gc-sections", "-Wl,-Map=output.map", "-s",
+    "-Wl,--gc-sections",
+    #"-Wl,-Map=output.map",
+    "-s",
     "-lc", "-lm", "-lGLESv3", "-lEGL", "-landroid", "-llog", "-lOpenSLES",
     "-latomic",
     "-shared",
@@ -144,16 +145,16 @@ if gotta_install:
 # run in the device
 if gotta_run:
     print("run!\n")
-    if 0:
-        f = open("log.txt", "w")
-        subprocess.run([
-            ADB_PATH,
-            "shell", "logcat",
-            #"-s", "BARE_APK"
-        ], stdout=f).check_returncode()
     subprocess.run([
         ADB_PATH,
         "shell", "am", "start",
         "-n",
         "org.my_organization.test/android.app.NativeActivity"
     ]).check_returncode()
+    if 1:
+        f = open("log.txt", "w")
+        subprocess.run([
+            ADB_PATH,
+            "shell", "logcat",
+            #"-s", "BARE_APK"
+        ], stdout=f).check_returncode()

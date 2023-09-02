@@ -94,7 +94,7 @@ Links to learn more about APK signing:
 At the top of `make.py` you will find some variables you can configure:
 
 ```python
-APP_NAME = "bare_appk"
+APP_NAME = "test"
 ANDROID_MIN_VERSION = 21
 ANDROID_TARGET_VERSION = 33
 SDK_PATH = "C:/Android"
@@ -143,6 +143,8 @@ Build the .apk & install it & launch it:
 ```
 python3 make.py run
 ```
+
+## 
 
 ## Links
 
