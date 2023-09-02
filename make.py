@@ -108,7 +108,7 @@ subprocess.run([
     ZIPALIGN_PATH,
     "-p", # Page-aligns uncompressed .so files
     "-f", # overwrite existing output file
-    #"-z" # recompress using the zopfli algorithm, which has better compression ratios but is slower
+    #"-z", # recompress using the zopfli algorithm, which has better compression ratios but is slower
     "4", # 4 byte alignment
     cur_apk_name, # input
     "./build/test.apk" # output

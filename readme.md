@@ -144,7 +144,11 @@ Build the .apk & install it & launch it:
 python3 make.py run
 ```
 
-## 
+## Clear the log
+
+```
+C:\Android\platform-tools\adb.exe logcat -b all -c
+```
 
 ## Links
 
