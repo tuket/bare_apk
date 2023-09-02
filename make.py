@@ -9,14 +9,6 @@ ANDROID_TARGET_VERSION = 33
 SDK_PATH = "C:/Android"
 JDK_PATH = "C:/Program Files/Java/jdk-20"
 
-#KEYTOOL_PATH = JDK_PATH + "/bin/keytool.exe"
-
-# links:
-# https://apilevels.com/
-# https://hero.handmade.network/forums/code-discussion/t/3016-guide_-_how_to_build_a_native_android_app_using_a_single_batch_file_for_visual_studio
-# https://stackoverflow.com/questions/39091845/create-android-apk-manually-via-command-line-makefile
-# https://developer.android.com/ndk/samples/sample_na.html
-
 arch = "arm32"
 #arch = "arm64"
 isArm32 = arch == "arm32"
