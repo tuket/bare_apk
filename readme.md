@@ -111,6 +111,19 @@ There are two different SDK version numbers you need to define:
 
 You can read more about the difference between these two versions here: https://stackoverflow.com/questions/24510219/what-is-the-difference-between-min-sdk-version-target-sdk-version-vs-compile-sd
 
+Another thing you can configure in the script is the ARM architecture.
+
+```python
+arch = "arm32"
+#arch = "arm64"
+```
+
+You can comment/uncomment these two lines to select between 32-bit ARM and 64-bit ARM instruction sets.
+
+## AndroidManifest.xml
+
+In the manifest file you also need to configure the minimum and target versions.
+
 ## Running the script
 
 In order to build the .apk, just call:
