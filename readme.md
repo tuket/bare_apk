@@ -160,4 +160,5 @@ C:\Android\platform-tools\adb.exe logcat -b all -c
 - https://connortumbleson.com/2018/02/19/taking-a-look-at-aapt2/
 - https://medium.com/mindorks/how-i-decreased-my-app-size-to-70-using-apk-analyser-4a6f79512072
 - https://developer.android.com/ndk/samples/sample_na.html
+- https://openxr-tutorial.com/android/opengles/1-introduction.html
 - http://java-decompiler.github.io/
